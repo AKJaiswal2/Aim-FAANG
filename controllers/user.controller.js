@@ -11,11 +11,6 @@ const register = async (req, res) => {
         await getManager().transaction(async (transactionalEntityManager) => {
              data = await getManager().query(`SELECT * FROM public.createUsers($1, $2, $3)`, [uname, uemail, uphn]);
         })
-
-        // await getManager().transaction(async (transactionalEntityManager) => {
-        //     const models = <Model[]>(
-        //       await getManager().query("select * from get_models()")
-        //     );
         res.send(data);
     }
     catch (error) {
